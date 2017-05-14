@@ -1,3 +1,9 @@
+temp = -999
+
+t = require("ds18b20")
+t.setup(4)
+addrs = t.addrs()
+
 mycounter=0
 srv=net.createServer(net.TCP) 
 srv:listen(80, function(conn) 
@@ -9,9 +15,13 @@ srv:listen(80, function(conn)
             m=""
         end
 
-        getTemp()
+        _temp = t.read(nil,t.C)
 
-        conn:send("<h1> Hello, this is Jeenas ESP8266.</h1><p>How are you today.<br> Count=" .. mycounter .. m .. "<br>Heap=" .. node.heap() .. "<br>Temp=" .. lasttemp)
+        if _temp ~= nil then
+           temp = _temp
+        end
+
+        conn:send("<h1> Hello, this is Jeenas ESP8266.</h1><p>How are you today.<br> Count=" .. mycounter .. m .. "<br>Heap=" .. node.heap() .. "<br>Temp=" .. temp)
     end) 
     conn:on("sent", function(conn) conn:close() end) 
 end)
