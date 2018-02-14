@@ -5,26 +5,28 @@ This is my first stab at a wireless termometer.
 ## Getting the code
 
     git clone https://github.com/jeena/esp8266-temperature.git
-    cd esp8266-temperature
-    git submodule init
-    git submodule update
 
 ## Setup
 
-It expects a credentials.lua file with content like this:
+Open the esptmp.ino file in the Arduino IDE.
 
-    SSID = "myssid"
-    PASSWORD = "mypasswd"
+It expects the credentials for your WiFi in the file like this:
 
-Copy the credentials.lua.example file into credentials.lua and change
-it so et matches your wifi credentials.
+    const char* ssid = "myssid";
+    const char* password = "mypass";
+
+Change the credentials in esptmp.ino so it matches your wifi credentials.
 
 ## Flashing
 
-To put the code onto the ESP8266 you need the luatool which is
-included as a git submodule.
+1. Under File -> Preferences set as Additional Boards Manager URLs:
+   http://arduino.esp8266.com/versions/2.3.0/package_esp8266com_index.json
+2. Chose under Tools -> Board the "Node MCU 1.0 (ESP12-E Module)"
+3. Press the Upload button
 
-Use flash.sh to flash it via /dev/ttyUSB0
+## Hardware Setup
+
+t.b.d.
 
 ## License
 
