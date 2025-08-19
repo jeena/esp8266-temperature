@@ -1,3 +1,5 @@
+⚠️ This repository has moved to https://git.jeena.net/jeena/esp8266-temperature
+
 # esp8266-temperature
 
 This is my first stab at a wireless termometer.
